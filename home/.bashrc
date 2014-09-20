@@ -25,7 +25,7 @@ export PATH="/opt/bin:/usr/local/cuda/bin:$PATH"
 
 # Source all scripts in ~/.bashrc.d ending with '.bashrc'
 if [ -d ~/.bashrc.d ]; then
-  for rc in $(find ~/.bashrc.d -maxdepth 1 -name '*.bashrc' -type f); do
+  for rc in $(find ~/.bashrc.d -maxdepth 1 -name '*.bashrc'); do
     source $rc
   done
 fi

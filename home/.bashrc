@@ -15,12 +15,6 @@ fi
 
 # All interactive shell stuff in separate files
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc).
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
-
 export PATH="/opt/bin:/usr/local/cuda/bin:$PATH"
 
 # Source all scripts in ~/.bashrc.d ending with '.bashrc'
@@ -37,5 +31,6 @@ export ANDROIDAPI=19
 export NDKROOT=$ANDROIDNDK
 export PATH="$ANDROIDSDK/platform-tools:$ANDROIDSDK/tools:$ANDROIDNDK:$PATH"
 
+# Homeshick not copied into the .bashrc.d - just left where it is
 source $HOME/.homesick/repos/homeshick/homeshick.sh
 

@@ -1,0 +1,36 @@
+# Readline settings  -*- shell-script -*-
+# May be useful?
+
+set completion-ignore-case on
+set completion-prefix-display-length 4
+set history-preserve-point on
+set show-all-if-ambiguous on
+
+set blink-matching-paren on
+
+# Tab completion
+TAB: menu-complete
+
+# Ctrl-left, right
+"\e[5C": end-of-line
+"\e[5D": beginning-of-line
+# Home/End
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+# Ctrl-arrows
+# # mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
+"\e[5C": forward-word
+"\e[5D": backward-word
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+# gnome-terminal (control + arrow key)
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+# konsole / xterm / rxvt (escape + arrow key)
+"\e\e[C": forward-word
+"\e\e[D": backward-word
+# arrows
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\eOA": history-search-backward
+"\eOB": history-search-forward

@@ -12,7 +12,8 @@ fi
 # Note: assumes that git-prompt.sh has already been sourced.  
 # In my setup, this is in 01git-prompt.bashrc
 # <$?> not working properly below:
-PS1="$U \e[0;36m[\w]\e[0;33m\$(__git_ps1 \" (%s)\")\e[0;30m\e[0;32m \n\e[0;35m\d \t\e[0;31m <\$?> \e[1;36m\\$\e[m "
+# PS1="$U \e[0;36m[\w]\e[0;33m\$(__git_ps1 \" (%s)\")\e[0;30m\e[0;32m \n\e[0;35m\d \t\e[0;31m <\$?> \e[1;36m\\$\e[m "
+PS1="$U \e[0;36m[\w]\e[0;33m\$(__git_ps1 \" (%s)\")\e[0;30m\e[0;32m \n\e[0;35m\d \t\e[0;31m \e[1;36m\\$\e[m "
 
 case $TERM in
     xterm*)

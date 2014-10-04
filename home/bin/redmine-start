@@ -1,0 +1,2 @@
+#!/bin/sh
+mongrel_rails start -c /home/nitin/redmine --user nitin --group nitin -e production -d -p 3001 --prefix=/~nitin/redmine -l /home/nitin/redmine/log/mongrel.log

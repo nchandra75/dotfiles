@@ -1,0 +1,3 @@
+#!/bin/sh
+xrandr --output VGA --mode 640x480
+

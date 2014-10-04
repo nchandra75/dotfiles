@@ -1,0 +1,5 @@
+#!/bin/bash
+source /opt/xil101/chipscope_pro/ChipScope/settings32.sh
+source /opt/xil101/edk/EDK/settings32.sh
+source /opt/xil101/ise/ISE/settings32.sh
+exec $SHELL

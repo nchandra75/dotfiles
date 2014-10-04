@@ -16,6 +16,7 @@ fi
 # All interactive shell stuff in separate files
 
 export PATH="/opt/bin:/usr/local/cuda/bin:$PATH"
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 # Source all scripts in ~/.bashrc.d ending with '.bashrc'
 if [ -d ~/.bashrc.d ]; then

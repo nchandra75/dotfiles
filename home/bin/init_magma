@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "Initializing variables for Magma"
+export PATH=/usr/local/magma/linux24_x86/bin:$PATH
+export LM_LICENSE_FILE=2700@10.65.0.45
+exec $SHELL

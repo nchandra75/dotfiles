@@ -6,9 +6,9 @@
 ;; (display-time)				; display time and load
 ;; (display-battery-mode)			; battery status: laptop
 ;; (column-number-mode t)			; duh
-(tool-bar-mode)				; toggle: turn OFF toolbar
-(menu-bar-mode)				; toggle: turn OFF menubar
-(set-scroll-bar-mode nil) 		; no side scroll bar
+;; (tool-bar-mode)				; toggle: turn OFF toolbar
+;; (menu-bar-mode)				; toggle: turn OFF menubar
+;; (set-scroll-bar-mode nil) 		; no side scroll bar
 (setq-default transient-mark-mode t)	; highlight 'region'
 (setq require-final-newline t)		; auto insert newline at EOF
 (setq next-line-add-newlines nil)	; stop at end of file
@@ -31,7 +31,7 @@
 (defun ffe ()
   "Open the emacs config file for editing"
   (interactive)
-  (find-file "~/work/admin/setup/emacs.el"))
+  (find-file "~/.emacs"))
 ;; Emacs server
 (server-start)
 
@@ -214,10 +214,11 @@ Frame must be declared as an environment."
 ; (setq org-startup-indented t)
 ; (setq org-odd-levels-only t)
 (setq org-todo-keywords 
-      '((sequence "TODO(t)" "NEXT(n)" "WAITING(w)" "|" "DONE(d)" "DEFERRED(e)")
-	(sequence "|" "CANCELED(c)")))
+      '((sequence "TODO(t)" "NEXT(n)" "WAITING(w@/!)" "|" "DONE(d@/!)" "DEFERRED(e!)")
+	(sequence "|" "CANCELED(c@/!)")))
 (setq org-use-fast-todo-selection t)
-(setq org-log-done '(state))
+(setq org-log-done 'note)
+(setq org-clock-continuously t)
 (eval-after-load "org"
   '(progn
      (define-key org-mode-map "\C-n" 'org-next-link) 
@@ -230,19 +231,22 @@ Frame must be declared as an environment."
   (interactive)
   (find-file "~/work/admin/org/TODO.org"))
 
-(defun nitin-preamble-insert () 
-  "Insert a preamble for org-publish HTML site."
-  (with-temp-buffer (insert-file-contents-literally "~/git/website/pages/preamble.html") 
-					(buffer-string))
-  )
-(defun nitin-postamble-insert () 
-  "Insert a postamble for org-publish HTML site."
-  (with-temp-buffer (insert-file-contents-literally "~/git/website/pages/postamble.html") 
-					(buffer-string))
-  )
+;; org-timer information
 
-(setq org-export-html-preamble (nitin-preamble-insert))
-(setq org-export-html-postamble (nitin-postamble-insert))
+;;; Omitting below since they error out if the files are missing.
+;; (defun nitin-preamble-insert () 
+;;   "Insert a preamble for org-publish HTML site."
+;;   (with-temp-buffer (insert-file-contents-literally "~/git/website/pages/preamble.html") 
+;; 					(buffer-string))
+;;   )
+;; (defun nitin-postamble-insert () 
+;;   "Insert a postamble for org-publish HTML site."
+;;   (with-temp-buffer (insert-file-contents-literally "~/git/website/pages/postamble.html") 
+;; 					(buffer-string))
+;;   )
+
+;; (setq org-export-html-preamble (nitin-preamble-insert))
+;; (setq org-export-html-postamble (nitin-postamble-insert))
 (require 'org-publish)
 (setq org-publish-project-alist
       '(("nitin-site"
@@ -306,21 +310,12 @@ Frame must be declared as an environment."
  '(safe-local-variable-values (quote ((TeX-master . "paper.tex") (TeX-master . "paper"))))
  '(tab-width 4)
  '(tool-bar-mode nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "apple" :family "Monaco")))))
 
-;;; ChangeLog
-;; $Log: emacs.el,v $
-;; Revision 1.4  2012/02/13 14:37:33  nitin
-;; tab killing. switching to spaces.
-;;
-;; Revision 1.3  2010/11/09 15:29:56  nitin
-;; Update to org7.3, replace remember with capture.
-;;
-;; Revision 1.2  2007/12/28 14:40:08  nitin
-;; Moved to new structure inside work directory
-;;
+;; nitin - custom faces not nice on mac.  Need some better way to pick good fonts.
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(default ((t (:inherit nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "apple" :family "Monaco")))))
+

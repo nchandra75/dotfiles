@@ -1,9 +1,10 @@
 # Useful aliases -*- shell-script -*-
 
 # Put dircolours here since it fits only with the alias
-eval `dircolors -b`
 alias ls='ls -F'
-alias ls='ls --color=auto'
+# no colour on Mac?
+# eval `dircolors -b`
+# alias ls='ls --color=auto'
 alias l='ls -lA'
 
 alias m='less -MMe'

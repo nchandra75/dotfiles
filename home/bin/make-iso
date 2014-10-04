@@ -1,0 +1,24 @@
+#!/bin/sh
+
+SRC="$1"
+DEST="$2"
+
+if [ -z "$SRC" -o -z "$DEST" ]; then
+    echo "Usage: $0 sourcedirectory destination.iso"
+    echo
+    echo "This script generates internal md5sum's for the sourcedirectory,"
+    echo "and then generates a bootable live CD from the directory"
+    echo "Naturally, destination.iso is the output"
+    exit
+fi
+
+find $SRC/ -type f -print0 | xargs -0 md5sum > $SRC/md5sums
+if [ -e "$SRC/base/boot.img" ]; then
+    mkisofs -pad -l -r -J -v -V "Morphix LiveCD" -b base/boot.img -c base/boot.cat -hide -rr -moved -o $DEST $SRC
+elif [ -e "$SRC/boot/grub/iso9660_stage1_5" ]; then
+    mkisofs -pad -l -r -J -v -V "Morphix LiveCD" -b boot/grub/iso9660_stage1_5 -c base/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -hide -rr -moved -o $DEST $SRC
+elif [ -e "%SRC/base/isolinux.bin" ]; then
+    mkisofs -pad -l -r -J -v -V "Morphix LiveCD" -b base/isolinux/isolinux.bin -c base/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -hide -rr -moved -o $DEST $SRC
+else
+    echo "Error: unable to find bootloader in $SRC. Either update this script, or make sure you have the right directory as src"
+fi

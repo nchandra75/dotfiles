@@ -73,8 +73,9 @@ endif " has("autocmd")
 
 " Nitin: Adding further settings from the tutorial etc.
 " colorscheme desert
+colorscheme murphy
 " Was defaulting to assuming a dark background. Why???
-set bg=light 
+" set bg=light 
 set backupdir=$HOME/.backup
 " For rox-filer
 " map <F12> :silent !rox -s %<CR>

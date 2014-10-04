@@ -7,10 +7,12 @@ set history-preserve-point on
 set show-all-if-ambiguous on
 
 set blink-matching-paren on
+set skip-completed-text on
 
 # auto completion only for C-j, C-k
 Control-j: menu-complete
 Control-k: menu-complete-backward
+Meta-Rubout: backward-kill-word
 
 # Ctrl-left, right
 "\e[5C": end-of-line

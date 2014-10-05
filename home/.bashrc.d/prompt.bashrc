@@ -24,7 +24,7 @@ alias prompt_getcolors='prompt_colors[9]=; local i; for i in ${!prompt_colors[@]
 
 function prompt_exitcode() {
 	prompt_getcolors
-		[[ $1 != 0 ]] && echo " $c2$1$c9"
+	[[ $1 != 0 ]] && echo " $c2$1$c9"
 }
 
 
@@ -77,7 +77,13 @@ function prompt_command() {
         # git: [branch:flags]
 	PS1="$PS1$(prompt_git)"
 	# path: [user@host:path]
-	PS1="$PS1$c1[$c0\u$c1@$c0\h$c1:$c0\w$c1]$c9"
+	PS1="$PS1$c1["
+	if [ $USER == "root" ]; then
+		PS1="$PS1$c2 ROOT "
+	else 
+		PS1="$PS1$c0\u"
+	fi
+	PS1="$PS1$c1@$c0\h$c1:$c0\w$c1]$c9"
 	PS1="$PS1\n"
         # date: [HH:MM:SS]
 	PS1="$PS1$c1[$c0$(date +"%F %H:%M:%S")$c1]$c9"

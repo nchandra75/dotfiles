@@ -1,2 +1,0 @@
-#!/bin/sh
-exec java -Xmx192m -jar /home/nitin/share/jarnal/jarnal.jar $1 $2 $3 $4 $5

@@ -1,5 +1,0 @@
-#!/bin/sh
-d=`date +%Y-%m-%d-%H%M%S`
-cd /home/nitin/work/course/540/aug08/lectures/
-vnc2swf -o $d.vnc -S "arecord -r 11025 $d.wav" -n localhost:1
-

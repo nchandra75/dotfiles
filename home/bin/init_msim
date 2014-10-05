@@ -1,5 +1,0 @@
-#!/bin/bash
-echo "Initializing variables for Modelsim"
-export PATH=/usr/local/modeltech/bin:$PATH
-export LM_LICENSE_FILE=2700@10.65.0.45
-exec $SHELL

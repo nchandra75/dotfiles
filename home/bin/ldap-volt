@@ -1,1 +1,0 @@
-ldapsearch -x -h 10.7.0.2 -b dc=ee,dc=iitm,dc=ac,dc=in -D cn=Admin,dc=ee,dc=iitm,dc=ac,dc=in -W $*

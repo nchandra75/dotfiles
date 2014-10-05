@@ -1,2 +1,0 @@
-#!/bin/sh
-vncviewer -geometry +0+0 localhost:1

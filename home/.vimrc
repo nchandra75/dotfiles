@@ -73,9 +73,23 @@ endif " has("autocmd")
 
 " Nitin: Adding further settings from the tutorial etc.
 " colorscheme desert
+colorscheme elflord
 " colorscheme murphy
 " Was defaulting to assuming a dark background. Why???
 " set bg=light 
+" colorscheme solarized
+" colorscheme delek
 set bg=dark
-colorscheme solarized
 set backupdir=$HOME/.backup
+
+" http://stackoverflow.com/questions/467739/how-do-you-get-vim-to-display-wrapped-lines-without-inserting-newlines
+" not to break on words
+set formatoptions=1
+set linebreak
+
+" fixing up moving line by line in the paragraph
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+

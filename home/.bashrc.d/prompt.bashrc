@@ -97,12 +97,13 @@ function prompt_command() {
 # PS1="$U \e[0;36m[\w]\e[0;33m\$(__git_ps1 \" (%s)\")\e[0;30m\e[0;32m \n\e[0;35m\d \t\e[0;31m <\$?> \e[1;36m\\$\e[m "
 # PS1="$U \e[0;36m[\w]\e[0;33m\$(__git_ps1 \" (%s)\")\e[0;30m\e[0;32m \n\e[0;35m\d \t\e[0;31m \e[1;36m\\$\e[m "
 
-case $TERM in
-xterm*)
+# Remove the check for xterm here.  Why was it needed?
+#case $TERM in
+#xterm*)
 # PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 PROMPT_COMMAND="prompt_command"
-;;
-*)
-;;
-esac
+#;;
+#*)
+#;;
+#esac
 

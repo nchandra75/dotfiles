@@ -11,7 +11,7 @@ set skip-completed-text on
 
 # auto completion only for C-j, C-k
 Control-j: menu-complete
-Control-k: menu-complete-backward
+Meta-j: menu-complete-backward
 Meta-Rubout: backward-kill-word
 
 # Ctrl-left, right

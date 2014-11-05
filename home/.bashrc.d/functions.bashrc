@@ -1,5 +1,5 @@
 function c() {
-	cd /home/nitin/work/current/$1
+	cd $HOME/work/current/$1
 }
 
 function psg() {

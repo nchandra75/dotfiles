@@ -247,7 +247,7 @@ Frame must be declared as an environment."
 
 ;; (setq org-export-html-preamble (nitin-preamble-insert))
 ;; (setq org-export-html-postamble (nitin-postamble-insert))
-(require 'org-publish)
+;(require 'org-publish)
 (setq org-publish-project-alist
       '(("nitin-site"
          :components ("site-content" "site-static"))

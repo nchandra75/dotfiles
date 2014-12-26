@@ -5,7 +5,7 @@ alias ls='ls -F'
 # no colour on Mac?
 # eval `dircolors -b`
 # alias ls='ls --color=auto'
-alias l='ls -lA'
+alias l='ls -lAtr'
 
 alias m='less -MMe'
 alias rm='rm -i'

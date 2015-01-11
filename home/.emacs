@@ -290,24 +290,56 @@ Frame must be declared as an environment."
  '(display-time-mode t)
  '(inhibit-startup-screen t)
  '(menu-bar-mode nil)
- '(org-agenda-custom-commands (quote (("n" "Next action items" todo #("NEXT" 0 4 (face org-warning)) nil) ("w" "Waiting items" todo #("WAITING" 0 7 (face org-warning)) nil) ("c" "Completed (Done or Deferred)" todo #("DONE|DEFERRED" 0 13 (face org-warning)) nil))))
- '(org-agenda-files (quote ("~/work/current/aura/aura.org" "~/work/admin/org/TODO.org" "~/work/admin/org/JOURNAL.org")))
+ '(org-agenda-custom-commands
+   (quote
+	(("n" "Next action items" todo
+	  #("NEXT" 0 4
+		(face org-warning))
+	  nil)
+	 ("w" "Waiting items" todo
+	  #("WAITING" 0 7
+		(face org-warning))
+	  nil)
+	 ("c" "Completed (Done or Deferred)" todo
+	  #("DONE|DEFERRED" 0 13
+		(face org-warning))
+	  nil))))
+ '(org-agenda-files
+   (quote
+	("~/work/current/aura/aura.org" "~/work/admin/org/TODO.org" "~/work/admin/org/JOURNAL.org")))
  '(org-agenda-start-on-weekday nil)
  '(org-attach-directory "~/annex")
- '(org-capture-templates (quote (("t" "Todo" entry (file+headline "~/work/admin/org/TODO.org" "Tasks") "* TODO %?
+ '(org-capture-templates
+   (quote
+	(("t" "Todo" entry
+	  (file+headline "~/work/admin/org/TODO.org" "Tasks")
+	  "* TODO %?
   OPENED: %U
  %i
-") ("r" "Reference" entry (file+headline "~/work/admin/org/refs.org" "Refs") "* TODO %U %?
+")
+	 ("r" "Reference" entry
+	  (file+headline "~/work/admin/org/refs.org" "Refs")
+	  "* TODO %U %?
 
  %i
-") ("j" "Journal" entry (file+headline "~/work/admin/org/journal.org" "Journal") "* %^{Title} %U
+")
+	 ("j" "Journal" entry
+	  (file+headline "~/work/admin/org/journal.org" "Journal")
+	  "* %^{Title} %U
   %?
 
  %i
-") ("i" "Idea" entry (file+headline "~/work/admin/org/journal.org" "New Ideas") "* %^{Title}
+")
+	 ("i" "Idea" entry
+	  (file+headline "~/work/admin/org/journal.org" "New Ideas")
+	  "* %^{Title}
  %i
 "))))
- '(safe-local-variable-values (quote ((TeX-master . "paper.tex") (TeX-master . "paper"))))
+ '(safe-local-variable-values
+   (quote
+	((TeX-master . "main.tex")
+	 (TeX-master . "paper.tex")
+	 (TeX-master . "paper"))))
  '(tab-width 4)
  '(tool-bar-mode nil))
 
@@ -319,3 +351,9 @@ Frame must be declared as an environment."
 ;;  ;; If there is more than one, they won't work right.
 ;;  '(default ((t (:inherit nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "apple" :family "Monaco")))))
 
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

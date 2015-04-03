@@ -307,7 +307,7 @@ Frame must be declared as an environment."
 ") ("i" "Idea" entry (file+headline "~/work/admin/org/journal.org" "New Ideas") "* %^{Title}
  %i
 "))))
- '(safe-local-variable-values (quote ((TeX-master . "paper.tex") (TeX-master . "paper"))))
+ '(safe-local-variable-values (quote ((TeX-master . "main.tex") (TeX-master . "paper.tex") (TeX-master . "paper"))))
  '(tab-width 4)
  '(tool-bar-mode nil))
 
@@ -319,3 +319,9 @@ Frame must be declared as an environment."
 ;;  ;; If there is more than one, they won't work right.
 ;;  '(default ((t (:inherit nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "apple" :family "Monaco")))))
 
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

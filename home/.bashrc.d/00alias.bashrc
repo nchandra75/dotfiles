@@ -15,6 +15,8 @@ alias cp='cp -i'
 alias ach='apt-cache search'
 alias acs='apt-cache show'
 
+alias o='xdg-open'
+
 alias pylab='ipython --pylab'
 
 alias h='homeshick'

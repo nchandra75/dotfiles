@@ -74,8 +74,8 @@ if has("autocmd")
 endif " has("autocmd")
 
 " Nitin: Adding further settings from the tutorial etc.
-" colorscheme desert
-colorscheme elflord
+colorscheme desert
+" colorscheme elflord
 " colorscheme murphy
 " Was defaulting to assuming a dark background. Why???
 " set bg=light 

@@ -336,11 +336,7 @@ Frame must be declared as an environment."
 	  "* %^{Title}
  %i
 "))))
- '(safe-local-variable-values
-   (quote
-	((TeX-master . "main.tex")
-	 (TeX-master . "paper.tex")
-	 (TeX-master . "paper"))))
+ '(safe-local-variable-values (quote ((TeX-master . "main.tex") (TeX-master . "paper.tex") (TeX-master . "paper"))))
  '(tab-width 4)
  '(tool-bar-mode nil))
 

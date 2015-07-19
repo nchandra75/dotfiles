@@ -70,6 +70,7 @@
 ; enable auctex and preview-latex style?
 ;(load "auctex.el" nil t t)
 ;(load "preview-latex.el" nil t t)
+(require 'tex-site)						; turn on AUCTeX - check if present first?
 (setq TeX-PDF-mode t)                      ;turn on PDF mode.
 
 

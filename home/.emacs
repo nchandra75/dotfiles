@@ -52,15 +52,7 @@
 (define-key global-map [(shift mouse-3)] 'imenu) ; imenu for subject popup 
 (global-set-key (kbd "<insert>") nil)	; blasted insert key
 
-;;; autofill -- dumped filladapt
-(add-hook 'text-mode-hook
-          (function (lambda ()
-                      (turn-on-auto-fill)
-                      )))
-
-;;; allout outline mode
-;(require 'allout)
-;(allout-init t)
+(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
 
 ;;; irritated with tabs and spaces. just use spaces?
 (setq c-basic-offset 4)
@@ -336,7 +328,11 @@ Frame must be declared as an environment."
 	  "* %^{Title}
  %i
 "))))
- '(safe-local-variable-values (quote ((TeX-master . "main.tex") (TeX-master . "paper.tex") (TeX-master . "paper"))))
+ '(safe-local-variable-values
+   (quote
+	((TeX-master . "main.tex")
+	 (TeX-master . "paper.tex")
+	 (TeX-master . "paper"))))
  '(tab-width 4)
  '(tool-bar-mode nil))
 
@@ -353,4 +349,4 @@ Frame must be declared as an environment."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:family "Monaco" :foundry "apple" :slant normal :weight normal :height 113 :width normal)))))

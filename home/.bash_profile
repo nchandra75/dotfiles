@@ -17,3 +17,12 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+##
+# Your previous /Users/nitin/.bash_profile file was backed up as /Users/nitin/.bash_profile.macports-saved_2015-10-25_at_18:43:54
+##
+
+# MacPorts Installer addition on 2015-10-25_at_18:43:54: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+

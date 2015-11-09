@@ -70,7 +70,7 @@
 ; enable auctex and preview-latex style?
 ;(load "auctex.el" nil t t)
 ;(load "preview-latex.el" nil t t)
-(require 'tex-site)						; turn on AUCTeX - check if present first?
+;(require 'tex-site)						; turn on AUCTeX - check if present first?
 (setq TeX-PDF-mode t)                      ;turn on PDF mode.
 
 
@@ -235,11 +235,11 @@ Frame must be declared as an environment."
 ;; org-timer information
 
 ;;; Omitting below since they error out if the files are missing.
-;; (defun nitin-preamble-insert () 
-;;   "Insert a preamble for org-publish HTML site."
-;;   (with-temp-buffer (insert-file-contents-literally "~/git/website/pages/preamble.html") 
-;; 					(buffer-string))
-;;   )
+(defun nitin-preamble-insert () 
+  "Insert a preamble for org-publish HTML site."
+  (with-temp-buffer (insert-file-contents-literally "~/git/website/pages/preamble.html") 
+					(buffer-string))
+  )
 ;; (defun nitin-postamble-insert () 
 ;;   "Insert a postamble for org-publish HTML site."
 ;;   (with-temp-buffer (insert-file-contents-literally "~/git/website/pages/postamble.html") 
@@ -248,7 +248,10 @@ Frame must be declared as an environment."
 
 ;; (setq org-export-html-preamble (nitin-preamble-insert))
 ;; (setq org-export-html-postamble (nitin-postamble-insert))
-;(require 'org-publish)
+(require 'ox-html)
+(require 'ox-publish)
+;(setq org-html-preamble '(lambda () "nitin-preamble-insert"))
+;(setq org-html-preamble 'nitin-preamble-insert)
 (setq org-publish-project-alist
       '(("nitin-site"
          :components ("site-content" "site-static"))
@@ -257,20 +260,42 @@ Frame must be declared as an environment."
          :base-extension "org"
          :publishing-directory "~/public_html"
          :recursive t
-         :publishing-function org-publish-org-to-html
+         :publishing-function org-html-publish-to-html
          :export-with-tags nil
          :headline-levels 4             ; Just the default for this project.
-         :table-of-contents nil
+		 :with-toc nil
+		 :with-latex t
          :section-numbers nil
          :sub-superscript nil
          :todo-keywords nil
          :author nil
          :creator-info nil
-;		 :html-preamble '(lambda () "nitin-preamble-insert")
-;         :html-postamble "<div id=\"footer\"> &copy; Nitin Chandrachoodan 2013.  Theme adapted from <a href=\"http://orderedlist.com/modernist/\">Modernist</a></div>"
-         :style "<script src=\"/~nitin/static/js/bootstrap.min.js\"></script>\n\
+		 :html-preamble "<div class=\"navbar navbar-default navbar-fixed-top\" role=\"navigation\">
+      <div class=\"container\">
+        <div class=\"navbar-header\">
+          <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">
+            <span class=\"sr-only\">Toggle navigation</span>
+            <span class=\"icon-bar\"></span>
+            <span class=\"icon-bar\"></span>
+            <span class=\"icon-bar\"></span>
+          </button>
+        </div>
+        <div class=\"navbar-collapse collapse\">
+          <ul class=\"nav navbar-nav\">
+            <li><a href=\"/~nitin/\">Home</a></li>
+            <li><a href=\"/~nitin/teaching/\">Teaching</a></li>
+            <li><a href=\"/~nitin/research/\">Research</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+"
+         :html-postamble "<div id=\"footer\"> &copy; Nitin Chandrachoodan 2015.  Theme adapted from <a href=\"http://orderedlist.com/modernist/\">Modernist</a></div>"
+         :html-head-extra "<script src=\"/~nitin/static/js/bootstrap.min.js\"></script>\n\
 <link rel=\"stylesheet\" href=\"/~nitin/static/css/bootstrap.css\" type=\"text/css\"/>\n\
-<link rel=\"stylesheet\" href=\"/~nitin/static/modernist.css\" type=\"text/css\"/>"
+<link rel=\"stylesheet\" href=\"/~nitin/static/modernist.css\" type=\"text/css\"/>\n\
+<script src=\"https://code.jquery.com/jquery.js\"></script>\n\
+<script src=\"/~nitin/static/js/bootstrap.min.js\"></script>"
          :timestamp t
          :exclude-tags ("noexport" "todo")
          :auto-preamble nil)

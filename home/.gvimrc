@@ -1,5 +1,5 @@
-"set guifont=Monaco:h13
-set guifont=Inconsolata:16
+set guifont=Monaco:h13
+"set guifont=Inconsolata:16
 set lines=50 columns=100
 set go-=T
 set bg=dark

@@ -33,12 +33,12 @@
   (interactive)
   (find-file "~/.emacs"))
 ;; Emacs server
-(server-start)
+;(server-start)
 
 ;;; keybindings
 (global-set-key '[f3] 'ffap)
 (global-set-key '[(shift f3)] 'dired)
-;(global-set-key '[f4] 'speedbar-get-focus)
+(global-set-key '[(shift f4)] 'speedbar-get-focus)
 ;(global-set-key '[f5] 'outline-minor-mode)
 (global-set-key '[f6] 'other-window)
 (global-set-key '[f8] 'kill-buffer)
@@ -46,8 +46,8 @@
 (global-set-key '[f9] 'server-edit)
 (global-set-key '[(shift f9)] 'eval-region)
 (global-set-key '[(shift f10)] 'eshell)
-(global-set-key '[f11] 'electric-buffer-list)
-(global-set-key '[f12] 'menu-bar-open)
+(global-set-key '[f12] 'electric-buffer-list)
+;(global-set-key '[f12] 'menu-bar-open)
 (global-set-key "\C-z" 'delete-other-windows)
 (define-key global-map [(shift mouse-3)] 'imenu) ; imenu for subject popup 
 (global-set-key (kbd "<insert>") nil)	; blasted insert key

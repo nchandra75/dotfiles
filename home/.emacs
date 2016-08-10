@@ -226,24 +226,21 @@ Frame must be declared as an environment."
 
 ;; org-timer information
 
-;;; Omitting below since they error out if the files are missing.
+(require 'ox-html)
+(require 'ox-publish)
 (defun nitin-preamble-insert () 
   "Insert a preamble for org-publish HTML site."
   (with-temp-buffer (insert-file-contents-literally "~/git/website/pages/preamble.html") 
 					(buffer-string))
   )
-;; (defun nitin-postamble-insert () 
-;;   "Insert a postamble for org-publish HTML site."
-;;   (with-temp-buffer (insert-file-contents-literally "~/git/website/pages/postamble.html") 
-;; 					(buffer-string))
-;;   )
+(defun nitin-postamble-insert () 
+  "Insert a postamble for org-publish HTML site."
+  (with-temp-buffer (insert-file-contents-literally "~/git/website/pages/postamble.html") 
+					(buffer-string))
+  )
 
-;; (setq org-export-html-preamble (nitin-preamble-insert))
-;; (setq org-export-html-postamble (nitin-postamble-insert))
-(require 'ox-html)
-(require 'ox-publish)
-;(setq org-html-preamble '(lambda () "nitin-preamble-insert"))
-;(setq org-html-preamble 'nitin-preamble-insert)
+(setq org-html-preamble (nitin-preamble-insert))
+(setq org-html-postamble (nitin-postamble-insert))
 (setq org-publish-project-alist
       '(("nitin-site"
          :components ("site-content" "site-static"))
@@ -255,35 +252,14 @@ Frame must be declared as an environment."
          :publishing-function org-html-publish-to-html
          :export-with-tags nil
          :headline-levels 4             ; Just the default for this project.
-		 :with-toc nil
-		 :with-latex t
+	 :with-toc nil
+	 :with-latex t
          :section-numbers nil
          :sub-superscript nil
          :todo-keywords nil
          :author nil
          :creator-info nil
-		 :html-preamble "<div class=\"navbar navbar-default navbar-fixed-top\" role=\"navigation\">
-      <div class=\"container\">
-        <div class=\"navbar-header\">
-          <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">
-            <span class=\"sr-only\">Toggle navigation</span>
-            <span class=\"icon-bar\"></span>
-            <span class=\"icon-bar\"></span>
-            <span class=\"icon-bar\"></span>
-          </button>
-        </div>
-        <div class=\"navbar-collapse collapse\">
-          <ul class=\"nav navbar-nav\">
-            <li><a href=\"/~nitin/\">Home</a></li>
-            <li><a href=\"/~nitin/teaching/\">Teaching</a></li>
-            <li><a href=\"/~nitin/research/\">Research</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-"
-         :html-postamble "<div id=\"footer\"> &copy; Nitin Chandrachoodan 2015.  Theme adapted from <a href=\"http://orderedlist.com/modernist/\">Modernist</a></div>"
-         :html-head-extra "<script src=\"/~nitin/static/js/bootstrap.min.js\"></script>\n\
+	 :html-head-extra "<script src=\"/~nitin/static/js/bootstrap.min.js\"></script>\n\
 <link rel=\"stylesheet\" href=\"/~nitin/static/css/bootstrap.css\" type=\"text/css\"/>\n\
 <link rel=\"stylesheet\" href=\"/~nitin/static/modernist.css\" type=\"text/css\"/>\n\
 <script src=\"https://code.jquery.com/jquery.js\"></script>\n\
@@ -324,7 +300,7 @@ Frame must be declared as an environment."
 	  nil))))
  '(org-agenda-files
    (quote
-	("~/work/current/aura/aura.org" "~/work/admin/org/TODO.org" "~/work/admin/org/JOURNAL.org")))
+	("~/work/current/aura/aura.org" "~/work/admin/org/TODO.org")))
  '(org-agenda-start-on-weekday nil)
  '(org-attach-directory "~/annex")
  '(org-capture-templates

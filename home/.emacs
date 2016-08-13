@@ -228,19 +228,6 @@ Frame must be declared as an environment."
 
 (require 'ox-html)
 (require 'ox-publish)
-(defun nitin-preamble-insert () 
-  "Insert a preamble for org-publish HTML site."
-  (with-temp-buffer (insert-file-contents-literally "~/git/website/pages/preamble.html") 
-					(buffer-string))
-  )
-(defun nitin-postamble-insert () 
-  "Insert a postamble for org-publish HTML site."
-  (with-temp-buffer (insert-file-contents-literally "~/git/website/pages/postamble.html") 
-					(buffer-string))
-  )
-
-(setq org-html-preamble (nitin-preamble-insert))
-(setq org-html-postamble (nitin-postamble-insert))
 (setq org-publish-project-alist
       '(("nitin-site"
          :components ("site-content" "site-static"))
@@ -252,20 +239,25 @@ Frame must be declared as an environment."
          :publishing-function org-html-publish-to-html
          :export-with-tags nil
          :headline-levels 4             ; Just the default for this project.
-	 :with-toc nil
-	 :with-latex t
+		 :with-toc nil
+		 :with-latex t
          :section-numbers nil
          :sub-superscript nil
          :todo-keywords nil
          :author nil
          :creator-info nil
-	 :html-head-include-default-style nil
-	 :html-head-include-scripts nil
-	 :html-head-extra "<script src=\"/~nitin/static/js/bootstrap.min.js\"></script>\n\
-<link rel=\"stylesheet\" href=\"/~nitin/static/css/bootstrap.css\" type=\"text/css\"/>\n\
-<link rel=\"stylesheet\" href=\"/~nitin/static/modernist.css\" type=\"text/css\"/>\n\
-<script src=\"https://code.jquery.com/jquery.js\"></script>\n\
-<script src=\"/~nitin/static/js/bootstrap.min.js\"></script>"
+		 :html-head "<link rel='stylesheet' href='/~nitin/static/css/site.css' type='text/css' />"
+		 :html-preamble "<div class=\"nav\">
+<ul>
+<li><a href=\"/~nitin/\">Home</a></li> |
+<li><a href=\"/~nitin/teaching/\">Teaching</a></li> |
+<li><a href=\"/~nitin/research/\">Research</a></li> |
+<li><a href=\"/~nitin/misc/\">Misc</a></li>
+</ul>
+</div>"
+		 :html-postamble "<div class='footer'>
+<a href='mailto:nitin@ee.iitm.ac.in'>Nitin Chandrachoodan</a> %C || %c
+</div>"
          :timestamp t
          :exclude-tags ("noexport" "todo")
          :auto-preamble nil)
@@ -285,7 +277,6 @@ Frame must be declared as an environment."
  '(display-battery-mode t)
  '(display-time-mode t)
  '(inhibit-startup-screen t)
- '(menu-bar-mode nil)
  '(org-agenda-custom-commands
    (quote
 	(("n" "Next action items" todo

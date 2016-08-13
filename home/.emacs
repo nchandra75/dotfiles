@@ -259,6 +259,8 @@ Frame must be declared as an environment."
          :todo-keywords nil
          :author nil
          :creator-info nil
+	 :html-head-include-default-style nil
+	 :html-head-include-scripts nil
 	 :html-head-extra "<script src=\"/~nitin/static/js/bootstrap.min.js\"></script>\n\
 <link rel=\"stylesheet\" href=\"/~nitin/static/css/bootstrap.css\" type=\"text/css\"/>\n\
 <link rel=\"stylesheet\" href=\"/~nitin/static/modernist.css\" type=\"text/css\"/>\n\

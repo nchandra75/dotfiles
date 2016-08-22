@@ -58,6 +58,15 @@ function prompt_git() {
 	echo "$c1<git: $c0$output$c1>$c9 "
 }
 
+# Determine active Python virtualenv details.
+function set_virtualenv () {
+  if test -z "$VIRTUAL_ENV" ; then
+      PYTHON_VIRTUALENV=""
+  else
+      PYTHON_VIRTUALENV="(`basename \"$VIRTUAL_ENV\"`) "
+  fi
+}
+
 function prompt_command() {
 	local exit_code=$?
 	# If the first command in the stack is prompt_command, no command was run.
@@ -72,10 +81,11 @@ function prompt_command() {
 	[[ "$simple_prompt" ]] && PS1='\n$ ' && return
 
 	prompt_getcolors
+	set_virtualenv    # set up the venv information
         # http://twitter.com/cowboy/status/150254030654939137
 	PS1="\n"
         # git: [branch:flags]
-	PS1="$PS1$(prompt_git)"
+	PS1="$PS1$PYTHON_VIRTUALENV$(prompt_git)"
 	# path: [user@host:path]
 	PS1="$PS1$c1["
 	if [ $USER == "root" ]; then

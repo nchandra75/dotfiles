@@ -246,7 +246,9 @@ Frame must be declared as an environment."
          :todo-keywords nil
          :author nil
          :creator-info nil
-		 :html-head "<link rel='stylesheet' href='/~nitin/static/css/site.css' type='text/css' />"
+		 :html-head "<link href='https://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<link rel='stylesheet' href='/~nitin/static/css/site.css' type='text/css' />"
 		 :html-preamble "<div class=\"nav\">
 <ul>
 <li><a href=\"/~nitin/\">Home</a></li> |

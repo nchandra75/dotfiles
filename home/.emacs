@@ -226,11 +226,13 @@ Frame must be declared as an environment."
 
 ;; org-timer information
 
+(require 'ox-latex)
+(require 'ox-beamer)
 (require 'ox-html)
 (require 'ox-publish)
 (setq org-publish-project-alist
       '(("nitin-site"
-         :components ("site-content" "site-static"))
+         :components ("site-content" "site-static" "site-rec-static"))
         ("site-content"
          :base-directory "~/git/website/pages/"
          :base-extension "org"
@@ -267,6 +269,12 @@ Frame must be declared as an environment."
          :base-directory "~/git/website/static/"
          :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|otf"
          :publishing-directory "~/public_html/static/"
+         :recursive t
+         :publishing-function org-publish-attachment)
+		("site-rec-static"
+         :base-directory "~/git/website/pages/"
+         :base-extension "png\\|jpg\\|gif\\|pdf\\|v\\|py\\|\\|cpp\\|c\\|h\\|txt"
+         :publishing-directory "~/public_html/"
          :recursive t
          :publishing-function org-publish-attachment)))
 
@@ -345,4 +353,4 @@ Frame must be declared as an environment."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Monaco" :foundry "apple" :slant normal :weight normal :height 113 :width normal)))))
+ '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 120 :width normal)))))

@@ -22,3 +22,5 @@ alias pylab='ipython --pylab'
 alias h='homeshick'
 alias goroot='sudo -E bash'
 alias t='todo.sh'
+
+alias glog='git log --graph --oneline --decorate --all'

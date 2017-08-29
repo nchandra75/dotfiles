@@ -35,4 +35,3 @@ export PATH="$ANDROIDSDK/platform-tools:$ANDROIDSDK/tools:$ANDROIDNDK:$PATH"
 # Homeshick not copied into the .bashrc.d - just left where it is
 source $HOME/.homesick/repos/homeshick/homeshick.sh
 
-export HOMEBREW_GITHUB_API_TOKEN="3ab04894f5f9c4137e88467a4c26cddd4967cb45"

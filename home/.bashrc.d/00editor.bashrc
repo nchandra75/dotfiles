@@ -1,11 +1,11 @@
 # Set an editor variable
-if [ `which mvim` ]; then
+if [ `whereis mvim` ]; then
 	EDITOR=mvim
-elif [ `which gvim` ]; then
+elif [ `whereis gvim` ]; then
 	EDITOR=gvim
-elif [ `which vim` ]; then
+elif [ `whereis vim` ]; then
 	EDITOR=vim
-elif [ `which nano` ]; then
+elif [ `whereis nano` ]; then
 	EDITOR=nano
 fi
 export EDITOR

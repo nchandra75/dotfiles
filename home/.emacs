@@ -35,6 +35,19 @@
 ;; Emacs server
 ;(server-start)
 
+;;; MELPA
+(require 'package)
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl "http" "https")))
+  ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
+  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  (when (< emacs-major-version 24)
+    ;; For important compatibility libraries like cl-lib
+    (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
+(package-initialize)
+
 ;;; keybindings
 (global-set-key '[f3] 'ffap)
 (global-set-key '[(shift f3)] 'dired)
@@ -201,6 +214,32 @@ Frame must be declared as an environment."
 (global-set-key '[f5] 'org-agenda)
 (global-set-key '[(control f5)] 'org-todo-list)
 
+;; (add-to-list 'package-archives
+;; 			 '("melpa" . "http://melpa.org/packages/") t)
+
+
+;; Configuration for org-ref and helm-bibtex
+;; from https://github.com/jkitchin/org-ref
+(setq reftex-default-bibliography '("~/work/doc/references.bib"))
+
+;; see org-ref for use of these variables
+(setq org-ref-bibliography-notes "~/work/doc/notes.org"
+      org-ref-default-bibliography '("~/work/doc/references.bib")
+      org-ref-pdf-directory "~/work/doc/bibtex-pdfs/")
+
+(setq bibtex-completion-bibliography "~/work/doc/references.bib"
+      bibtex-completion-library-path "~/work/doc/bibtex-pdfs"
+      bibtex-completion-notes-path "~/work/doc/helm-bibtex-notes")
+(setq bibtex-completion-pdf-field "File")
+(setq org-latex-prefer-user-labels t)
+(setq bibtex-autokey-year-length 4
+	bibtex-autokey-name-year-separator "-"
+	bibtex-autokey-year-title-separator "-"
+	bibtex-autokey-titleword-separator "-"
+	bibtex-autokey-titlewords 2
+	bibtex-autokey-titlewords-stretch 1
+	bibtex-autokey-titleword-length 5)
+
 (setq org-directory (concat work-dir "admin/org/"))
 (setq org-default-notes-file (concat org-directory "notes.org"))
 (setq org-hide-leading-stars t)
@@ -224,12 +263,25 @@ Frame must be declared as an environment."
   (interactive)
   (find-file "~/work/admin/org/TODO.org"))
 
+(autoload 'helm-bibtex "helm-bibtex" "" t)
+(require 'org-ref)
+;; (require 'doi-utils)
+
 ;; org-timer information
 
 (require 'ox-latex)
 (require 'ox-beamer)
 (require 'ox-html)
 (require 'ox-publish)
+(add-to-list 'org-latex-classes
+          '("koma-article"
+             "\\documentclass{scrartcl}"
+             ("\\section{%s}" . "\\section*{%s}")
+             ("\\subsection{%s}" . "\\subsection*{%s}")
+             ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+             ("\\paragraph{%s}" . "\\paragraph*{%s}")
+             ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
 (setq org-publish-project-alist
       '(("nitin-site"
          :components ("site-content" "site-static" "site-rec-static"))
@@ -294,7 +346,10 @@ Frame must be declared as an environment."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
  '(column-number-mode t)
+ '(custom-enabled-themes (quote (wombat)))
  '(display-battery-mode t)
  '(display-time-mode t)
  '(inhibit-startup-screen t)
@@ -364,4 +419,4 @@ Frame must be declared as an environment."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 120 :width normal)))))
+ '(default ((t (:family "Consolas" :foundry "outline" :slant normal :weight normal :height 120 :width normal)))))

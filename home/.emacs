@@ -42,16 +42,16 @@
        (proto (if no-ssl "http" "https")))
   ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
-  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  (add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
   (when (< emacs-major-version 24)
     ;; For important compatibility libraries like cl-lib
     (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
 
 ;;; keybindings
-(global-set-key '[f3] 'ffap)
-(global-set-key '[(shift f3)] 'dired)
-(global-set-key '[(shift f4)] 'speedbar-get-focus)
+;; (global-set-key '[f3] 'ffap)
+;; (global-set-key '[(shift f3)] 'dired)
+;; (global-set-key '[(shift f4)] 'speedbar-get-focus)
 ;(global-set-key '[f5] 'outline-minor-mode)
 (global-set-key '[f6] 'other-window)
 (global-set-key '[f8] 'kill-buffer)
@@ -64,6 +64,12 @@
 (global-set-key "\C-z" 'delete-other-windows)
 (define-key global-map [(shift mouse-3)] 'imenu) ; imenu for subject popup 
 (global-set-key (kbd "<insert>") nil)	; blasted insert key
+
+(require 'yasnippet)
+(yas-global-mode 1)
+
+(global-set-key '[(shift f7)] #'aya-create)
+(global-set-key '[(ctrl f7)] #'aya-expand)
 
 (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
 
@@ -230,6 +236,7 @@ Frame must be declared as an environment."
 (setq bibtex-completion-bibliography "~/work/doc/references.bib"
       bibtex-completion-library-path "~/work/doc/bibtex-pdfs"
       bibtex-completion-notes-path "~/work/doc/helm-bibtex-notes")
+
 (setq bibtex-completion-pdf-field "File")
 (setq org-latex-prefer-user-labels t)
 (setq bibtex-autokey-year-length 4
@@ -239,6 +246,7 @@ Frame must be declared as an environment."
 	bibtex-autokey-titlewords 2
 	bibtex-autokey-titlewords-stretch 1
 	bibtex-autokey-titleword-length 5)
+(setq doi-utils-make-notes nil)
 
 (setq org-directory (concat work-dir "admin/org/"))
 (setq org-default-notes-file (concat org-directory "notes.org"))
@@ -255,7 +263,7 @@ Frame must be declared as an environment."
   '(progn
      (define-key org-mode-map "\C-n" 'org-next-link) 
      (define-key org-mode-map "\C-p" 'org-previous-link)
-     (define-key org-mode-map '[f7] 'org-archive-to-archive-sibling)
+     ;; (define-key org-mode-map '[f7] 'org-archive-to-archive-sibling)
      (global-set-key "\C-cL" 'org-insert-link-global)
      (global-set-key "\C-co" 'org-open-at-point-global)))
 (defun foo ()
@@ -265,7 +273,11 @@ Frame must be declared as an environment."
 
 (autoload 'helm-bibtex "helm-bibtex" "" t)
 (require 'org-ref)
-;; (require 'doi-utils)
+(require 'doi-utils)
+
+(global-set-key '[f3] 'doi-utils-add-bibtex-entry-from-doi)
+(global-set-key '[(shift f3)] 'helm-bibtex)
+(global-set-key '[(shift f4)] 'doi-utils-get-bibtex-entry-pdf)
 
 ;; org-timer information
 
@@ -350,7 +362,6 @@ Frame must be declared as an environment."
    [default default default italic underline success warning error])
  '(column-number-mode t)
  '(custom-enabled-themes (quote (wombat)))
- '(display-battery-mode t)
  '(display-time-mode t)
  '(inhibit-startup-screen t)
  '(org-agenda-custom-commands
@@ -369,7 +380,7 @@ Frame must be declared as an environment."
 	  nil))))
  '(org-agenda-files
    (quote
-	("~/work/current/aura/aura.org" "~/work/admin/org/TODO.org")))
+	("~/xilinx/admin/update/201801.org" "~/work/current/aura/aura.org" "~/work/admin/org/TODO.org")))
  '(org-agenda-start-on-weekday nil)
  '(org-attach-directory "~/annex")
  '(org-capture-templates
@@ -398,6 +409,7 @@ Frame must be declared as an environment."
 	  "* %^{Title}
  %i
 "))))
+ '(package-selected-packages (quote (yasnippet-snippets auto-yasnippet org-ref)))
  '(safe-local-variable-values
    (quote
 	((TeX-master . "main.tex")
@@ -419,4 +431,4 @@ Frame must be declared as an environment."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Consolas" :foundry "outline" :slant normal :weight normal :height 120 :width normal)))))
+ '(default ((t (:family "DejaVu Sans Mono" :foundry "PfEd" :slant normal :weight normal :height 120 :width normal)))))

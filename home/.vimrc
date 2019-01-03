@@ -83,7 +83,13 @@ colorscheme desert
 " colorscheme solarized
 " colorscheme delek
 set bg=dark
-set backupdir=$HOME/.backup
+" set backupdir=$HOME/.backup
+" set backupdir=~/.vim/backup//
+" set directory=~/.vim/swap//
+" set undodir=~/.vim/undo//
+" Backups are overrated...
+set nobackup
+set noswapfile
 
 " http://stackoverflow.com/questions/467739/how-do-you-get-vim-to-display-wrapped-lines-without-inserting-newlines
 " not to break on words

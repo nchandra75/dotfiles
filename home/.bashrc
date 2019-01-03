@@ -21,7 +21,13 @@ if [ -d ~/.bashrc.d ]; then
 fi
 
 # Add ~/bin to path always
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 # Homeshick not copied into the .bashrc.d - just left where it is
 source $HOME/.homesick/repos/homeshick/homeshick.sh
 
+
+#PATH="/home/nitin/perl5/bin${PATH:+:${PATH}}"; export PATH;
+#PERL5LIB="/home/nitin/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+#PERL_LOCAL_LIB_ROOT="/home/nitin/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+#PERL_MB_OPT="--install_base \"/home/nitin/perl5\""; export PERL_MB_OPT;
+#PERL_MM_OPT="INSTALL_BASE=/home/nitin/perl5"; export PERL_MM_OPT;

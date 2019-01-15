@@ -24,3 +24,4 @@ alias goroot='sudo -E bash'
 alias t='todo.sh'
 
 alias glog='git log --graph --oneline --decorate --all'
+alias gmt='gromit-mpx -k ISO_Level3_Shift'

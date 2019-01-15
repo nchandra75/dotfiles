@@ -102,3 +102,8 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+" Tab sizing
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+

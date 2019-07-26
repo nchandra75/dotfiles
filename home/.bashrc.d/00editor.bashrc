@@ -1,11 +1,14 @@
 # Set an editor variable
-if [ `which mvim` ]; then
+if [ `command -v mvim` ]; then
 	EDITOR=mvim
-elif [ `which gvim` ]; then
+elif [ `command -v gvim` ]; then
 	EDITOR=gvim
-elif [ `which vim` ]; then
+elif [ `command -v vim` ]; then
 	EDITOR=vim
-elif [ `which nano` ]; then
+elif [ `command -v nano` ]; then
 	EDITOR=nano
+else
+	# Ran out of options. Set a default and hope for the best.
+	EDITOR=vi
 fi
 export EDITOR

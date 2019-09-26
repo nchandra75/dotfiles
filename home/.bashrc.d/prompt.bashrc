@@ -58,6 +58,15 @@ function prompt_git() {
 	echo "$c1<git: $c0$output$c1>$c9 "
 }
 
+# Set up local app information - for Xilinx etx.
+function set_localapp () {
+  if test -z "$LOCALAPP" ; then
+    LAPP=""
+  else
+    LAPP="($LOCALAPP)"
+  fi
+}
+
 # Determine active Python virtualenv details.
 function set_virtualenv () {
   if test -z "$VIRTUAL_ENV" ; then
@@ -81,11 +90,12 @@ function prompt_command() {
 	[[ "$simple_prompt" ]] && PS1='\n$ ' && return
 
 	prompt_getcolors
+	set_localapp	# For Xilinx etc.
 	set_virtualenv    # set up the venv information
         # http://twitter.com/cowboy/status/150254030654939137
 	PS1="\n"
         # git: [branch:flags]
-	PS1="$PS1$PYTHON_VIRTUALENV$(prompt_git)"
+	PS1="$PS1$c2$LAPP$c0 $PYTHON_VIRTUALENV$(prompt_git)"
 	# path: [user@host:path]
 	PS1="$PS1$c1["
 	if [ $USER == "root" ]; then

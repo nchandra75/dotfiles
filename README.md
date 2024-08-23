@@ -9,7 +9,7 @@ Howto
 
 On a new machine:
 
-    git clone git://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
+    git clone https://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
 
 followed by 
 

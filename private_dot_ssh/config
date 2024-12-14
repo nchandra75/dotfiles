@@ -1,0 +1,306 @@
+# Include /Users/nitin/.colima/ssh_config
+
+# UseKeychain    yes
+AddKeysToAgent yes
+IdentityFile ~/.ssh/atlas
+
+Host nitinports
+	Hostname 10.21.19.249
+    LocalForward 8901 localhost:5902
+    LocalForward 18384 localhost:8384
+	#	LocalForward 8082 localhost:8082
+
+# LAN ID of atlas
+#	Hostname 192.168.86.163
+#	Switching to tailscale instead - fast even on LAN
+#Host atlas
+#	Hostname tatlas
+#	LocalForward 8901 localhost:5901
+
+Host dojo
+	Hostname dojo.chandrachoodan.in
+	Port 5847
+
+Host rsn
+	Hostname zh2525.rsync.net
+	User zh2525
+
+Host atlas
+	Hostname 10.21.19.250
+    #	LocalForward 8901 localhost:5902
+
+Host ee5332
+	Hostname 10.24.11.163
+
+Host e171
+	Hostname 10.21.17.171
+	LocalForward 8902 localhost:5901
+
+Host e128
+	Hostname 10.21.17.128
+
+Host d163
+    Hostname 10.21.17.163
+    LocalForward 8903 localhost:5902
+
+Host eewebnew
+    Hostname 10.24.8.165
+
+Host ngc
+        Hostname ngc.marar.in
+        Port 7923
+	
+Host jump
+	Hostname dev.nptel.ac.in
+	User jump
+	Port 7923
+
+Host prod-fe
+	ProxyJump jump
+
+Host remote
+	Hostname remote.iitm.ac.in
+	Port 3927
+
+Host 5g
+	Hostname 10.21.16.27
+	Port 42000
+	LocalForward 8910 localhost:5901
+	# LocalForward 8182 172.16.1.10:22
+	# LocalForward 8100 172.16.1.15:443
+	# LocalForward 8443 localhost:8443
+	# LocalForward 3389 192.168.122.229:3389
+	# LocalForward 5901 localhost:5901
+	# LocalForward 8080 localhost:8080
+
+Host ironman
+    Hostname 10.21.16.27
+    Port 45000
+
+Host ngc
+	Hostname 35.211.249.24
+	Port 7923
+
+Host nptel
+	Hostname nptel.ac.in
+
+Host npint
+	Hostname 10.24.1.62
+
+Host nptest
+	Hostname 10.21.24.227
+
+Host gitlab.testbed.in
+#	Hostname gitlab.testbed.in
+	Hostname localhost
+	User git
+	Port 8182
+
+Host pve1
+	Hostname 10.24.11.11
+    User root
+
+Host pve2
+	Hostname 10.24.11.12
+	User root
+
+Host pve3
+        Hostname 10.24.11.13
+        User root
+
+Host pve4-root
+    Hostname 10.24.11.14
+    User root
+
+Host pve4
+    Hostname 10.24.11.14
+    User nitin
+
+Host pve5
+    Hostname 10.24.11.15
+    User nitin
+
+Host npstor
+	Hostname 10.24.11.30
+	User npadmin
+
+Host speech
+	Hostname 10.24.11.165
+	User nitin
+Host nw1
+	Hostname 10.24.0.147
+	User root
+
+Host bbb
+	Hostname evc.iitm.ac.in
+Host netdb
+	Hostname 10.24.4.12
+	User nocadmin
+Host ee2003
+	Hostname 10.24.8.123
+
+Host eegpu
+	Hostname 10.24.6.18
+
+Host vuln-1
+	Hostname 10.24.8.124
+
+Host vuln-2
+	Hostname 10.24.8.125
+
+Host ife
+	Hostname dev.iitm.ac.in
+	Port 3927
+	User nptel
+
+host nfe
+	Hostname dev.nptel.ac.in
+	Port 3927
+	User nptel
+
+host npd1
+	Hostname 10.24.11.21
+	Port 2237
+	User nitadmin
+
+Host spv1
+	Hostname 10.24.11.167
+	User nitadmin
+
+Host spv2
+	Hostname 10.24.11.168
+	User nitadmin
+
+Host s111
+	Hostname 10.24.11.111
+	User nptel
+	ProxyJump npd1
+
+Host npmaster
+	Hostname 10.24.11.10
+	User nptel
+
+Host jump
+	Hostname dev.nptel.ac.in
+	User jump
+	Port 7923
+
+Host prod-fe prod-db test-fe test-db p2-fe
+	ProxyJump jump
+
+Host mad1
+        Hostname 10.24.11.190
+        User debian
+
+Host e174
+	Hostname 10.21.17.174
+
+Host nbg
+	Hostname 10.24.11.160
+	User debian
+
+Host nbgnit
+	Hostname 10.24.11.160
+	User nitin1
+
+Host jup
+	Hostname 10.24.11.172
+	User debian
+
+Host jupnit
+	Hostname 10.24.11.172
+	User nitin
+
+Host mon
+	Hostname 10.24.11.173
+	User debian
+
+Host arc
+	Hostname 10.24.11.180
+	User debian
+
+Host npsys
+	Hostname 10.24.6.22
+	User nitin
+	LocalForward 8988 192.168.1.100:80
+	LocalForward 8989 192.168.1.100:443
+
+
+Host npsharp
+	Hostname 10.24.11.164
+
+Host gate-prod-fe gate-prod-db npgate-fe npgate-db
+	ProxyJump jump
+
+
+
+Host rpi
+	User root
+	Hostname 10.21.16.75
+	Port 22
+	LocalForward 2280 localhost:80
+
+Host thanos
+	Hostname 172.16.16.16
+	ProxyJump 5g
+
+Host ironman
+	Hostname 172.16.16.17
+	ProxyJump 5g
+
+Host github-hooktest
+	Hostname github.com
+    IdentityFile ~/.ssh/github-hooktest
+
+Host asr4
+        Hostname 34.72.77.175
+
+Host asr5
+        Hostname 34.16.39.189
+
+# Krishna Vasudevan Virtual Lab
+Host vlab
+        Hostname 10.24.11.166
+        User ubuntu
+
+Host internalapp
+        Hostname 35.200.242.81
+
+
+# NPTEL systems
+Host srv-master
+        Hostname 34.93.132.164
+        User nitadmin
+
+Host stage2
+        Hostname 10.24.11.181
+
+Host alloc
+        Hostname 10.24.11.182
+
+Host us1
+        Hostname 10.21.147.33
+        User user
+
+Host sandbox
+        Hostname 10.24.11.183
+        ProxyJump jump
+        User npadmin
+
+Host stage3
+	Hostname 10.24.11.184
+
+Host grafana
+	Hostname 10.24.11.200
+
+# Google cloud server for containers
+Host gd-srv
+	# Hostname 34.93.10.193
+	Hostname 34.93.153.227
+
+# Ultrasound lab
+Host usl
+    # Hostname 10.21.147.93
+	Hostname 10.21.147.27
+	User user
+

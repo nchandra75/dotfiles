@@ -1,0 +1,189 @@
+" Trying for minimal settings
+" Nitin Chandrachoodan <nitin@ee.iitm.ac.in> 2024-12
+" Many inputs from
+" - https://github.com/nvim-zh/minimal_vim/blob/master/init.vim
+" - https://github.com/tpope/vim-sensible/blob/master/plugin/sensible.vim
+
+set nocompatible
+
+" https://stackoverflow.com/q/30691466/6064933
+set clipboard^=unnamed,unnamedplus
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+set autoindent		" always set autoindenting on
+set history=1000	" keep 50 lines of command line history
+set ruler			" show the cursor position all the time
+set showcmd			" display incomplete commands
+set incsearch		" do incremental searching
+set number
+set relativenumber	" relative line numbers
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+" This is an alternative that also works in block mode, but the deleted
+" text is lost and it only works for putting the current register.
+"vnoremap p "_dp
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+
+  " Enable file type detection.
+  " Use the default filetype settings, so that mail gets 'tw' set to 72,
+  " 'cindent' is on in C files, etc.
+  " Also load indent files, to automatically do language-dependent indenting.
+  filetype plugin indent on
+
+  " For all text files set 'textwidth' to 78 characters.
+  autocmd FileType text setlocal textwidth=78
+  " Treat .md files as MarkDown.  Who uses Modula2 anyway????
+  au BufNewFile,BufRead *.md  set filetype=markdown
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+
+endif " has("autocmd")
+
+" Nitin: Adding further settings from the tutorial etc.
+" colorscheme desert
+" colorscheme elflord
+" colorscheme murphy
+" Was defaulting to assuming a dark background. Why???
+" set bg=light 
+" colorscheme solarized
+" colorscheme delek
+set bg=dark
+" set backupdir=$HOME/.backup
+" set backupdir=~/.vim/backup//
+" set directory=~/.vim/swap//
+" set undodir=~/.vim/undo//
+" Backups are overrated...
+set nobackup
+set noswapfile
+
+" http://stackoverflow.com/questions/467739/how-do-you-get-vim-to-display-wrapped-lines-without-inserting-newlines
+" not to break on words
+set formatoptions=1
+set linebreak
+
+" fixing up moving line by line in the paragraph
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
+" Tab sizing
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
+" Set matching pairs of characters and highlight matching brackets
+set matchpairs+=<:>,「:」
+
+" Ignore case in general, but become case-sensitive when uppercase is present
+set ignorecase smartcase
+
+" Break line at predefined characters
+set linebreak
+" Character to show before the lines that have been soft-wrapped
+set showbreak=↪
+
+" Use mouse to select and resize windows, etc.
+if has('mouse')
+    set mouse=nic  " Enable mouse in several mode
+    set mousemodel=popup  " Set the behaviour of mouse
+endif
+
+" Ignore certain files and folders when globbing
+set wildignore+=*.o,*.obj,*.bin,*.dll,*.exe
+set wildignore+=*/.git/*,*/.svn/*,*/__pycache__/*,*/build/**
+set wildignore+=*.pyc
+set wildignore+=*.DS_Store
+set wildignore+=*.aux,*.bbl,*.blg,*.brf,*.fls,*.fdb_latexmk,*.synctex.gz,*.pdf
+
+" Ask for confirmation when handling unsaved or read-only files
+set confirm
+
+" Do not use visual and error bells
+set novisualbell noerrorbells
+
+" Persistent undo even after you close a file and re-open it.
+" For vim, we need to set up an undodir so that $HOME is not cluttered with
+" undo files.
+if !has('nvim')
+    if !isdirectory($HOME . '/.local/vim/undo')
+        call mkdir($HOME . '/.local/vim/undo', 'p', 0700)
+    endif
+    set undodir=~/.local/vim/undo
+endif
+set undofile
+
+" Completion behaviour
+set completeopt+=menuone  " Show menu even if there is only one item
+set completeopt-=preview  " Disable the preview window
+
+" Settings for popup menu
+set pumheight=15  " Maximum number of items to show in popup menu
+if exists('&pumblend')
+    set pumblend=5  " Pesudo blend effect for popup menu
+endif
+
+" Custom key mappings
+" Save key strokes (now we do not need to press shift to enter command mode).
+" Vim-sneak has also mapped `;`, so using the below mapping will break the map
+" used by vim-sneak
+
+
+nnoremap ; :
+xnoremap ; :
+
+" Quicker way to open command window
+nnoremap q; q:
+
+" Quicker <Esc> in insert mode
+inoremap <silent> jj <Esc>
+
+" Turn the word under cursor to upper case
+inoremap <silent> <c-u> <Esc>viwUea
+
+" Turn the current word into title case
+inoremap <silent> <c-t> <Esc>b~lea
+
+" Jump to matching pairs easily in normal mode
+nnoremap <Tab> %
+
+" Resize windows using <Alt> and h,j,k,l, inspiration from
+" https://vim.fandom.com/wiki/Fast_window_resizing_with_plus/minus_keys (bottom page).
+" If you enable mouse support, shorcuts below may not be necessary.
+nnoremap <silent> <M-h> <C-w><
+nnoremap <silent> <M-l> <C-w>>
+nnoremap <silent> <M-j> <C-W>-
+nnoremap <silent> <M-k> <C-W>+
+
+" Fast window switching, inspiration from
+" https://stackoverflow.com/a/4373470/6064933
+nnoremap <silent> <M-left> <C-w>h
+nnoremap <silent> <M-right> <C-w>l
+nnoremap <silent> <M-down> <C-w>j
+nnoremap <silent> <M-up> <C-w>k
+
+" Clear highlighting
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+endif        
+

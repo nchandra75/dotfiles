@@ -20,6 +20,7 @@ end
 set -gx LESS -R
 
 alias jjp='jj --no-pager'
+alias cz=chezmoi
 
 if has_command eza
     alias ls='eza --group-directories-first'

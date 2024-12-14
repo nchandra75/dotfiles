@@ -21,6 +21,7 @@ set -gx LESS -R
 
 alias jjp='jj --no-pager'
 alias cz=chezmoi
+zoxide init fish | source
 
 if has_command eza
     alias ls='eza --group-directories-first'

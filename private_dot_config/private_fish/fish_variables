@@ -3,10 +3,13 @@
 SETUVAR --export BW_SESSION:\x2bX\x2bJ54Osxeh0V\x2byBlqqsVlARwZ\x2bAptOUfPGa89Kk2g9eGbqB\x2bn0yDopS/Buu03LSdmeOZvnEAzpaEneEW6ilBw\x3d\x3d
 SETUVAR --export CUDACXX:/usr/local/cuda/bin/nvcc
 SETUVAR --export CUDA_HOME:/usr/local/cuda
-SETUVAR --export SSH_AGENT_PID:2023618
-SETUVAR --export SSH_AUTH_SOCK:/tmp/ssh\x2dXXXXXXXPNg1M/agent\x2e2023617
+SETUVAR --export NNN_FIFO:/tmp/nnn\x2efifo
+SETUVAR --export NNN_PLUG:p\x3apreview\x2dtui\x3bc\x3acdpath\x3bf\x3afzopen
+SETUVAR --export SSH_AGENT_PID:4760
+SETUVAR --export SSH_AUTH_SOCK:/tmp/ssh\x2dXXXXXXfnJWEG/agent\x2e4759
 SETUVAR SSH_KEYS_TO_AUTOLOAD:/home/nitin/\x2essh/atlas\x1e/home/nitin/\x2essh/id_ed25519
-SETUVAR --export TERMINAL:/usr/bin/wezterm
+SETUVAR --export TERMINAL:/home/nitin/\x2elocal/bin/ghostty
+SETUVAR --export _JAVA_OPTIONS:\x2dDglass\x2egtk\x2euiScale\x3d200\x25
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:brblack
 SETUVAR fish_color_cancel:\x2dr
@@ -36,4 +39,4 @@ SETUVAR fish_pager_color_description:yellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/usr/local/cuda/bin\x1e/home/flatpak/exports/bin
+SETUVAR fish_user_paths:/home/nitin/\x2elocal/bin\x1e/usr/local/cuda/bin\x1e/home/flatpak/exports/bin

@@ -218,6 +218,7 @@ Host mon
 Host arc
 	Hostname 10.24.11.180
 	User debian
+    ProxyJump jump
 
 Host npsys
 	Hostname 10.24.6.22

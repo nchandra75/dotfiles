@@ -302,6 +302,10 @@ Host gd-srv
 # Ultrasound lab
 Host usl
     # Hostname 10.21.147.93
-	Hostname 10.21.147.27
+	Hostname 10.21.147.70
 	User user
+
+
+Host iesrv
+	Hostname 10.21.18.101
 

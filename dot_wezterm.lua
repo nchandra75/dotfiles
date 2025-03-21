@@ -8,10 +8,14 @@ config.font = wezterm.font 'JetBrains Mono'
 -- config.font = wezterm.font 'FiraCode Nerd Font'
 
 config.window_decorations = "RESIZE"
+-- config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
 -- Appearance
-config.window_background_opacity = 0.9
-config.enable_tab_bar = false
-config.hide_tab_bar_if_only_one_tab = true
+config.window_background_opacity = 1.0
+config.enable_tab_bar = true
+config.hide_tab_bar_if_only_one_tab = false
+
+-- config.enable_tab_bar = true
+-- config.hide_tab_bar_if_only_one_tab = false
 
 return config

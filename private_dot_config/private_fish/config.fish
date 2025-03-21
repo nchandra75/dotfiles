@@ -5,6 +5,13 @@ function has_command
     command -v $argv[1] >/dev/null 2>&1
 end
 
+# Set some sensible environment variables
+set -gx EDITOR vim
+set -gx VISUAL $EDITOR
+set -gx LANG en_US.UTF-8
+set -gx LC_ALL en_US.UTF-8
+
+
 # Alias for opening files easily
 alias o='xdg-open'
 # alias flatpak='flatpak --installation=shared'
@@ -21,7 +28,7 @@ set -gx LESS -R
 
 alias jjp='jj --no-pager'
 alias cz=chezmoi
-zoxide init fish | source
+# zoxide init fish | source
 fzf --fish | source
 
 if has_command eza
@@ -69,7 +76,7 @@ function vcs_status
             set_color magenta
             printf " ($branch)"
         end
-    # Then check for git repository (including worktrees)
+        # Then check for git repository (including worktrees)
     else if test -e .git
         set -l branch (git branch --show-current 2>/dev/null)
         if test $status -eq 0
@@ -90,29 +97,29 @@ function fish_prompt
     # Current working directory
     set_color blue
     printf '%s' (prompt_pwd)
-    
+
     # VCS status (git/jj)
     vcs_status
-    
+
     # Command duration
     if test $CMD_DURATION -gt 1000
         set_color cyan
         printf ' [%s]' (format_duration $CMD_DURATION)
     end
-    
+
     # Current time
     set_color brblack
     printf ' [%s]' (date "+%H:%M:%S")
-    
+
     # New line for the prompt
     printf '\n'
-    
+
     # SSH host indicator (if connected via SSH)
     if set -q SSH_CONNECTION
         set_color yellow
         printf '@%s ' (hostname -s)
     end
-    
+
     # Prompt character (# for root, > for regular user)
     if test (id -u) -eq 0
         set_color red
@@ -121,7 +128,7 @@ function fish_prompt
         set_color normal
         printf '> '
     end
-    
+
     set_color normal
 end
 
@@ -129,7 +136,7 @@ end
 function fish_user_key_bindings
     # Use Ctrl+F for accepting autosuggestion (similar to right arrow)
     bind \cf forward-char
-    
+
     # Use Ctrl+R for searching command history
     bind \cr history-search-backward
 end
@@ -141,20 +148,7 @@ abbr -a gd 'git diff'
 abbr -a gc 'git commit'
 abbr -a gp 'git push'
 abbr -a gl 'git pull'
-
-# Set some sensible environment variables
-set -gx EDITOR vim
-set -gx VISUAL $EDITOR
-set -gx LANG en_US.UTF-8
-set -gx LC_ALL en_US.UTF-8
-
-set --global --export HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew";
-set --global --export HOMEBREW_CELLAR "/home/linuxbrew/.linuxbrew/Cellar";
-set --global --export HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew";
-fish_add_path --global --move --path "/home/linuxbrew/.linuxbrew/bin" "/home/linuxbrew/.linuxbrew/sbin";
-if test -n "$MANPATH[1]"; set --global --export MANPATH '' $MANPATH; end;
-if not contains "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH; set --global --export INFOPATH "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH; end;
-if test -n "$XDG_DATA_DIRS"; set --global --export XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share" $XDG_DATA_DIRS; end;
+abbr -a daily "$EDITOR ~/work/notes/journals/(date +%Y-%m-%d).md"
 
 # For LD_LIBRARY_PATH (since fish_add_path is only for PATH)
 if not contains /usr/local/cuda/lib64 $LD_LIBRARY_PATH
@@ -166,4 +160,4 @@ if not contains /usr/local/cuda/lib64 $LD_LIBRARY_PATH
 end
 
 starship init fish | source
-
+mise activate fish | source

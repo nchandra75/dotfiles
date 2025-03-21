@@ -73,3 +73,9 @@ export PATH="$PATH:$HOME/work/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
+
+if [ -e /home/nitin/.nix-profile/etc/profile.d/nix.sh ]; then . /home/nitin/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

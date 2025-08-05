@@ -20,10 +20,11 @@ if [ -d ~/.bashrc.d ]; then
   done
 fi
 
+alias cz=chezmoi
 # Add ~/bin to path always
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 # Homeshick not copied into the .bashrc.d - just left where it is
-source $HOME/.homesick/repos/homeshick/homeshick.sh
+# source $HOME/.homesick/repos/homeshick/homeshick.sh
 
 
 #PATH="/home/nitin/perl5/bin${PATH:+:${PATH}}"; export PATH;
@@ -32,7 +33,3 @@ source $HOME/.homesick/repos/homeshick/homeshick.sh
 #PERL_MB_OPT="--install_base \"/home/nitin/perl5\""; export PERL_MB_OPT;
 #PERL_MM_OPT="INSTALL_BASE=/home/nitin/perl5"; export PERL_MM_OPT;
 
-. "$HOME/.atuin/bin/env"
-
-[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
-eval "$(atuin init bash)"

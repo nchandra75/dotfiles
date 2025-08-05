@@ -8,6 +8,7 @@ Host nitinports
 	Hostname 10.21.19.249
     LocalForward 8901 localhost:5902
     LocalForward 18384 localhost:8384
+    ForwardAgent yes
 	#	LocalForward 8082 localhost:8082
 
 # LAN ID of atlas
@@ -297,7 +298,8 @@ Host grafana
 # Google cloud server for containers
 Host gd-srv
 	# Hostname 34.93.10.193
-	Hostname 34.93.153.227
+    # Hostname 34.93.153.227
+	Hostname 34.47.182.190
 
 # Ultrasound lab
 Host usl
@@ -308,4 +310,17 @@ Host usl
 
 Host iesrv
 	Hostname 10.21.18.101
+
+Host wsdemo
+    Hostname 10.24.11.204
+    ForwardAgent yes
+
+Host code
+    Hostname code.iitm.ac.in
+
+Host eesrv
+    Hostname 10.24.1.153
+
+Host sco
+    Hostname scoringtool.nptel.ac.in
 

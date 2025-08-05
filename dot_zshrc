@@ -21,7 +21,7 @@ cdpath=($HOME $HOME/work $HOME/work/current $HOME/git $HOME/scratch)
 alias cz=chezmoi
 
 # brew install fzf 
-source <(fzf --zsh)
+# source <(fzf --zsh)
 # clone https://github.com/Aloxaf/fzf-tab - not adding into homeshick
 # fzftab=$HOME/.local/zsh-local/fzf-tab
 # [ -f $fzftab/fzf-tab.plugin.zsh ] && source $fzftab/fzf-tab.plugin.zsh
@@ -40,10 +40,6 @@ if [ -f '/home/nitin/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/
 
 export LM_LICENSE_FILE=2100@10.21.17.65
 
-
-# Created by `pipx` on 2024-09-29 16:58:33
-export PATH="$PATH:/home/nitin/.local/bin"
-eval "$(register-python-argcomplete pipx)"
 
 # Adding golang path
 export PATH="$PATH:/usr/local/go/bin"

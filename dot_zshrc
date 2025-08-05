@@ -14,33 +14,17 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-
-# Nitin 
-source $HOME/.homesick/repos/homeshick/homeshick.sh
-fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
-
-# linuxbrew has some of the executables in the path
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
-
-
-bashd=$HOME/.bashrc.d
-# Use the same aliases etc from Bash
-source $bashd/00alias.bashrc
-
-# Completion etc loaded at end
-zshd=$HOME/.zsh.d
-source $zshd/completion
-
 # Set up cd path
 setopt auto_cd
 cdpath=($HOME $HOME/work $HOME/work/current $HOME/git $HOME/scratch)
 
+alias cz=chezmoi
+
 # brew install fzf 
 source <(fzf --zsh)
 # clone https://github.com/Aloxaf/fzf-tab - not adding into homeshick
-fzftab=$HOME/.local/zsh-local/fzf-tab
-[ -f $fzftab/fzf-tab.plugin.zsh ] && source $fzftab/fzf-tab.plugin.zsh
+# fzftab=$HOME/.local/zsh-local/fzf-tab
+# [ -f $fzftab/fzf-tab.plugin.zsh ] && source $fzftab/fzf-tab.plugin.zsh
 
 # . $HOME/.asdf/asdf.sh
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -67,15 +51,11 @@ export PATH="$PATH:/usr/local/go/bin"
 export PAGER=bat
 
 # Add work bin to PATH
-export PATH="$PATH:$HOME/work/bin"
+export PATH="$PATH:$HOME/bin:$HOME/work/bin"
 
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-. "$HOME/.atuin/bin/env"
 
-eval "$(atuin init zsh)"
-
-if [ -e /home/nitin/.nix-profile/etc/profile.d/nix.sh ]; then . /home/nitin/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
